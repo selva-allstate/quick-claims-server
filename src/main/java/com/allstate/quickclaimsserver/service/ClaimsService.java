@@ -9,5 +9,7 @@ public interface ClaimsService {
     public List<Claims> getAllClaims();
     public List<Claims> getByclaimType(String claimType);
 
+    public List<Claims> getBystatusCode(Integer statusCode);
+
     public Claims getByclaimNumber(Integer claimNumber) throws ClaimNotFoundException;
 }

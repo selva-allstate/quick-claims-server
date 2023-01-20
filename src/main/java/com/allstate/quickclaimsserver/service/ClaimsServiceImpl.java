@@ -19,9 +19,15 @@ public class ClaimsServiceImpl implements ClaimsService{
         return claimsRepository.findAll();
     }
 
+
     @Override
     public List<Claims> getByclaimType(String claimType) {
         return claimsRepository.findAllByclaimType(claimType);
+    }
+
+    @Override
+    public List<Claims> getBystatusCode(Integer statusCode) {
+        return claimsRepository.findAllClaimsBystatusCode(statusCode);
     }
 
     @Override
@@ -34,4 +40,5 @@ public class ClaimsServiceImpl implements ClaimsService{
         }
 
     }
+
 }

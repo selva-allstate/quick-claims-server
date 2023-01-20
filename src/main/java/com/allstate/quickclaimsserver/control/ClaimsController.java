@@ -29,4 +29,9 @@ public class ClaimsController {
     public Claims findByclaimNumber(@PathVariable("claimNumber") Integer claimnumber) throws ClaimNotFoundException {
         return claimsService.getByclaimNumber(claimnumber);
     }
+
+    @GetMapping("/status/{statusCode}")
+    public List<Claims> getAllClaimStatusCode(@PathVariable("statusCode") Integer statuscode){
+        return  claimsService.getBystatusCode(statuscode);
+    }
 }
