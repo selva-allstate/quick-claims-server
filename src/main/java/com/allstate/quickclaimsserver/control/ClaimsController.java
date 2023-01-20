@@ -1,6 +1,7 @@
 package com.allstate.quickclaimsserver.control;
 
 import com.allstate.quickclaimsserver.domain.Claims;
+import com.allstate.quickclaimsserver.exceptions.ClaimNotFoundException;
 import com.allstate.quickclaimsserver.service.ClaimsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,5 +23,10 @@ public class ClaimsController {
         {
             return claimsService.getByclaimType(claimType);
         }
+    }
+
+    @GetMapping("/{claimNumber}")
+    public Claims findByclaimNumber(@PathVariable("claimNumber") Integer claimnumber) throws ClaimNotFoundException {
+        return claimsService.getByclaimNumber(claimnumber);
     }
 }

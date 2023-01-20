@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ClaimsRepository extends JpaRepository<Claims, Integer> {
     public List<Claims> findAllByclaimType(String claimType);
+    public Claims findByclaimNumber(Integer claimNumber);
 }
