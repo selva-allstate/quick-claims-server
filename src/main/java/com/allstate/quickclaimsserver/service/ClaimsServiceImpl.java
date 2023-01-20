@@ -16,4 +16,9 @@ public class ClaimsServiceImpl implements ClaimsService{
     public List<Claims> getAllClaims() {
         return claimsRepository.findAll();
     }
+
+    @Override
+    public List<Claims> getByclaimType(String claimType) {
+        return claimsRepository.findAllByclaimType(claimType);
+    }
 }

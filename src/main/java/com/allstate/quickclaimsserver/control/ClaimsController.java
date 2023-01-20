@@ -3,10 +3,7 @@ package com.allstate.quickclaimsserver.control;
 import com.allstate.quickclaimsserver.domain.Claims;
 import com.allstate.quickclaimsserver.service.ClaimsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,7 +15,12 @@ public class ClaimsController {
     ClaimsService claimsService;
 
     @GetMapping
-    public List<Claims> getAllClaims(){
-        return claimsService.getAllClaims();
+    public List<Claims> getAllClaims(@RequestParam(value="claimType", required = false) String claimType){
+        if (claimType == null) {
+            return claimsService.getAllClaims();
+        } else
+        {
+            return claimsService.getByclaimType(claimType);
+        }
     }
 }
