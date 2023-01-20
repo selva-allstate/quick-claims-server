@@ -14,7 +14,7 @@ public class Claims {
     private Integer policyNumber;
     private Integer claimNumber;
     private Double claimAmount;
-    private Date claimDate;
+    private String claimDate;
     private Integer statusCode;
     private String claimType;
 
@@ -50,11 +50,11 @@ public class Claims {
         this.claimAmount = claimAmount;
     }
 
-    public Date getClaimDate() {
+    public String getClaimDate() {
         return claimDate;
     }
 
-    public void setClaimDate(Date claimDate) {
+    public void setClaimDate(String claimDate) {
         this.claimDate = claimDate;
     }
 
@@ -100,7 +100,7 @@ public class Claims {
                 '}';
     }
 
-    public Claims(Integer id, Integer policyNumber, Integer claimNumber, Double claimAmount, Date claimDate, Integer statusCode, String claimType) {
+    public Claims(Integer id, Integer policyNumber, Integer claimNumber, Double claimAmount, String claimDate, Integer statusCode, String claimType) {
         this.id = id;
         this.policyNumber = policyNumber;
         this.claimNumber = claimNumber;
