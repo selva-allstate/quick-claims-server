@@ -34,4 +34,10 @@ public class ClaimsController {
     public List<Claims> getAllClaimStatusCode(@PathVariable("statusCode") Integer statuscode){
         return  claimsService.getBystatusCode(statuscode);
     }
+
+    @PostMapping
+    public Claims saveNewClaim(@RequestBody Claims claims){
+        System.out.println(claims);
+        return claimsService.saveClaim(claims);
+    }
 }

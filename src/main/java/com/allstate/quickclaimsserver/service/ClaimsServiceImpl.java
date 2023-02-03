@@ -41,4 +41,9 @@ public class ClaimsServiceImpl implements ClaimsService{
 
     }
 
+    @Override
+    public Claims saveClaim(Claims claims) {
+        return claimsRepository.save(claims);
+    }
+
 }
