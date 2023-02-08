@@ -10,6 +10,6 @@ import java.util.List;
 public interface ClaimsRepository extends JpaRepository<Claims, Integer> {
     public List<Claims> findAllByclaimType(String claimType);
     public Claims findByclaimNumber(Integer claimNumber);
-    public List<Claims> findAllClaimsBystatusCode(Integer statusCode);
+    public List<Claims> findAllByStatusCode(Integer statusCode);
 
 }

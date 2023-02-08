@@ -22,31 +22,31 @@ public class BootstrapService {
 
 
 
-            Claims newClaim = new Claims(1, 101000000, 512345098, 1000.00, LocalDate.parse("2022-01-31", DateTimeFormatter.ISO_LOCAL_DATE), 0, "PROPERTY");
+            Claims newClaim = new Claims(1, 512345098,"Anna", 1000.00, LocalDate.parse("2022-01-31", DateTimeFormatter.ISO_LOCAL_DATE), "",  0, "PROPERTY", "","","","","","North Road, Belfast","");
             Claims saveClaim = claimsRepository.save(newClaim);
-            System.out.println("Claims saved with id" + saveClaim.getId());
-            Claims newClaim1 = new Claims(2, 102000000, 764435698, 2000.00, LocalDate.parse("2021-02-02", DateTimeFormatter.ISO_LOCAL_DATE), 3, "AUTO");
+            System.out.println("Claims saved with id" + saveClaim.getClaimNumber());
+            Claims newClaim1 = new Claims(2, 764435698, "Michael", 2000.00, LocalDate.parse("2021-02-02", DateTimeFormatter.ISO_LOCAL_DATE),"", 3, "MOTOR","", "","Toyota","Yaris", "2003","", "");
             claimsRepository.save(newClaim1);
 
-            Claims newClaim2 = new Claims(3, 103000000, 589789454, 5100.00, LocalDate.parse("2022-02-01", DateTimeFormatter.ISO_DATE), 1, "AUTO");
+            Claims newClaim2 = new Claims(3, 589789454, "Peter", 5100.00, LocalDate.parse("2022-02-01", DateTimeFormatter.ISO_DATE), "", 1, "MOTOR","","","BMW","e36","1999", "","" );
             claimsRepository.save(newClaim2);
-            Claims newClaim3 = new Claims(4, 104000000, 765098687, 8960.00, LocalDate.parse("2023-01-01", DateTimeFormatter.ISO_DATE), 0, "PET");
+            Claims newClaim3 = new Claims(4, 765098687, "Sarah", 8960.00, LocalDate.parse("2023-01-01", DateTimeFormatter.ISO_DATE),"", 0, "PET","Dog", "Golden Retriever","", "", "", "", "");
             claimsRepository.save(newClaim3);
-            Claims newClaim4 = new Claims(5, 105000000, 986543320, 530.00, LocalDate.parse("2020-01-31", DateTimeFormatter.ISO_DATE), 0, "AUTO");
+            Claims newClaim4 = new Claims(5, 986543320, "Arthur", 530.00, LocalDate.parse("2020-01-31", DateTimeFormatter.ISO_DATE), "", 0, "MOTOR", "", "", "Hyundai","Tucson","2022","","");
             claimsRepository.save(newClaim4);
-            Claims newClaim5 = new Claims(6, 106000000, 878543098, 250.00, LocalDate.parse("2020-02-01", DateTimeFormatter.ISO_DATE), 2, "AUTO");
+            Claims newClaim5 = new Claims(6, 878543098,"Srikantha", 250.00, LocalDate.parse("2020-02-01", DateTimeFormatter.ISO_DATE), "", 2, "MOTOR", "", "", "Audi","A4","2006","","");
             claimsRepository.save(newClaim5);
-            Claims newClaim6 = new Claims(7, 107000000, 897043209, 7000.00, LocalDate.parse("2022-06-01", DateTimeFormatter.ISO_DATE), 5, "PET");
+            Claims newClaim6 = new Claims(7,  897043209,"Lauren", 7000.00, LocalDate.parse("2022-06-01", DateTimeFormatter.ISO_DATE), "",  5, "PET", "Dog", "Alaskan Malamute", "", "", "", "", "");
             claimsRepository.save(newClaim6);
-            Claims newClaim7 = new Claims(8, 108000000, 794243509, 150.00, LocalDate.parse("2022-02-02", DateTimeFormatter.ISO_DATE), 2, "AUTO");
+            Claims newClaim7 = new Claims(8, 794243509,"Charles",150.00, LocalDate.parse("2022-02-02", DateTimeFormatter.ISO_DATE),"", 2, "MOTOR", "", "", "Volkswagen Passat", "2007", "", "", "");
             claimsRepository.save(newClaim7);
-            Claims newClaim8 = new Claims(9, 109000000, 908643412, 10000.00, LocalDate.parse("2020-01-31", DateTimeFormatter.ISO_DATE), 3, "PROPERTY");
+            Claims newClaim8 = new Claims(9, 908643412,"Phil", 10000.00, LocalDate.parse("2020-01-31", DateTimeFormatter.ISO_DATE),"", 3, "PROPERTY", "", "", "", "", "", "20, Ridgeway Street, Leeds", "");
             claimsRepository.save(newClaim8);
-            Claims newClaim9 = new Claims(10, 110000000, 386420754, 1302.00, LocalDate.parse("2017-02-01", DateTimeFormatter.ISO_DATE), 5, "PROPERTY");
+            Claims newClaim9 = new Claims(10, 386420754,"Tom", 1302.00, LocalDate.parse("2017-02-01", DateTimeFormatter.ISO_DATE), "", 5, "PROPERTY", "", "", "", "","", "15, Harrington Road", "");
             claimsRepository.save(newClaim9);
-            Claims newClaim10 = new Claims(11, 111000000, 578043250, 500.00, LocalDate.parse("2023-01-17", DateTimeFormatter.ISO_DATE), 1, "AUTO");
+            Claims newClaim10 = new Claims(11, 578043250,"William", 500.00, LocalDate.parse("2023-01-17", DateTimeFormatter.ISO_DATE),"Change Breakpads and servicing" , 1, "AUTO", "", "", "Nissan", "Rogue", "2023", "", "");
             claimsRepository.save(newClaim10);
-            Claims newClaim11 = new Claims(12, 112000000, 871209648, 100.00, LocalDate.parse("2023-01-09", DateTimeFormatter.ISO_DATE), 0, "PET");
+            Claims newClaim11 = new Claims(12, 871209648,"Gemma", 100.00, LocalDate.parse("2023-01-09", DateTimeFormatter.ISO_DATE),"The cat hurt its leg",  0, "PET", "cat", "Maine Coon", "", "", "", "", "");
             claimsRepository.save(newClaim11);
         }
     }

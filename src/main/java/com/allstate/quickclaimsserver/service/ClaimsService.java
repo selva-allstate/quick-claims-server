@@ -14,4 +14,6 @@ public interface ClaimsService {
     public Claims getByclaimNumber(Integer claimNumber) throws ClaimNotFoundException;
 
     public Claims saveClaim(Claims claims);
+
+    public List<Integer> getAllStatuscodes();
 }

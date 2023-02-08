@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ClaimsServiceImpl implements ClaimsService{
@@ -27,7 +28,7 @@ public class ClaimsServiceImpl implements ClaimsService{
 
     @Override
     public List<Claims> getBystatusCode(Integer statusCode) {
-        return claimsRepository.findAllClaimsBystatusCode(statusCode);
+        return claimsRepository.findAllByStatusCode(statusCode);
     }
 
     @Override
@@ -44,6 +45,15 @@ public class ClaimsServiceImpl implements ClaimsService{
     @Override
     public Claims saveClaim(Claims claims) {
         return claimsRepository.save(claims);
+    }
+
+    @Override
+    public List<Integer> getAllStatuscodes() {
+
+        return claimsRepository.findAll().stream()
+                .map( claims -> claims.getStatusCode())
+                     .distinct()
+                .collect(Collectors.toList());
     }
 
 }
