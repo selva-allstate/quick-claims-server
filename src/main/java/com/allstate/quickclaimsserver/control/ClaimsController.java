@@ -17,15 +17,19 @@ public class ClaimsController {
     ClaimsService claimsService;
 
     @GetMapping
-    public List<Claims> getAllClaims(@RequestParam(value="claimType", required = false) String claimType
-                                     )
+    public List<Claims> getAllClaims(@RequestParam(value="claimType", required = false) String claimType,
+                                     @RequestParam(value="policyNo", required = false) Integer policyNo)
 
     {
-        if (claimType == null) {
-            return claimsService.getAllClaims();
-        } else
-        {
+        if (claimType != null) {
             return claimsService.getByclaimType(claimType);
+
+        } else if (policyNo != null)
+        {
+            return claimsService.getByPolicyNumber(policyNo);
+        }
+        else {
+            return claimsService.getAllClaims();
         }
     }
 

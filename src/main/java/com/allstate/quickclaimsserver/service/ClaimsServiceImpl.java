@@ -29,6 +29,11 @@ public class ClaimsServiceImpl implements ClaimsService{
     }
 
     @Override
+    public List<Claims> getByPolicyNumber(Integer policyNumber) {
+        return claimsRepository.findAllBypolicyNumber(policyNumber);
+    }
+
+    @Override
     public List<Claims> getBystatusCode(Integer statusCode) {
         return claimsRepository.findAllByStatusCode(statusCode);
     }

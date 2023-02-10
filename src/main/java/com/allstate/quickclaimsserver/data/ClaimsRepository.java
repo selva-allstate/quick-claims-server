@@ -12,4 +12,5 @@ public interface ClaimsRepository extends JpaRepository<Claims, Integer> {
     public Claims findByclaimNumber(Integer claimNumber);
     public List<Claims> findAllByStatusCode(Integer statusCode);
 
+    public List<Claims> findAllBypolicyNumber(Integer policyNumber);
 }
