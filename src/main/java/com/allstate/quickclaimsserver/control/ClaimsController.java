@@ -6,6 +6,7 @@ import com.allstate.quickclaimsserver.service.ClaimsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @RestController
@@ -42,5 +43,11 @@ public class ClaimsController {
     public Claims saveNewClaim(@RequestBody Claims claims){
         System.out.println(claims);
         return claimsService.saveClaim(claims);
+    }
+
+    @PutMapping("/{claimNumber}")
+    public Claims updateClaim(@PathVariable Integer claimNumber,  @RequestBody HashMap<String, Object> fields)
+    {
+        return claimsService.updateClaim(claimNumber, fields);
     }
 }
