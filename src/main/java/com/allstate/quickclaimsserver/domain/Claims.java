@@ -1,8 +1,11 @@
 package com.allstate.quickclaimsserver.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -34,6 +37,10 @@ public class Claims {
     private String propertyAddress;
 
     private String anyotherDetails;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Task> tasks;
 
     public Integer getClaimNumber() {
         return claimNumber;
@@ -77,6 +84,14 @@ public class Claims {
 
     public String getClaimReason() {
         return claimReason;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
     public void setClaimReason(String claimReason) {
@@ -160,12 +175,12 @@ public class Claims {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Claims claims = (Claims) o;
-        return Objects.equals(claimNumber, claims.claimNumber) && Objects.equals(policyNumber, claims.policyNumber) && Objects.equals(customerName, claims.customerName) && Objects.equals(claimAmount, claims.claimAmount) && Objects.equals(claimDate, claims.claimDate) && Objects.equals(claimReason, claims.claimReason) && Objects.equals(statusCode, claims.statusCode) && Objects.equals(claimType, claims.claimType) && Objects.equals(animalType, claims.animalType) && Objects.equals(animalBreed, claims.animalBreed) && Objects.equals(vehicleMake, claims.vehicleMake) && Objects.equals(vehicleModel, claims.vehicleModel) && Objects.equals(vehicleManyear, claims.vehicleManyear) && Objects.equals(propertyAddress, claims.propertyAddress) && Objects.equals(anyotherDetails, claims.anyotherDetails);
+        return Objects.equals(claimNumber, claims.claimNumber) && Objects.equals(policyNumber, claims.policyNumber) && Objects.equals(customerName, claims.customerName) && Objects.equals(claimAmount, claims.claimAmount) && Objects.equals(claimDate, claims.claimDate) && Objects.equals(claimReason, claims.claimReason) && Objects.equals(statusCode, claims.statusCode) && Objects.equals(claimType, claims.claimType) && Objects.equals(animalType, claims.animalType) && Objects.equals(animalBreed, claims.animalBreed) && Objects.equals(vehicleMake, claims.vehicleMake) && Objects.equals(vehicleModel, claims.vehicleModel) && Objects.equals(vehicleManyear, claims.vehicleManyear) && Objects.equals(propertyAddress, claims.propertyAddress) && Objects.equals(anyotherDetails, claims.anyotherDetails) && Objects.equals(tasks, claims.tasks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(claimNumber, policyNumber, customerName, claimAmount, claimDate, claimReason, statusCode, claimType, animalType, animalBreed, vehicleMake, vehicleModel, vehicleManyear, propertyAddress, anyotherDetails);
+        return Objects.hash(claimNumber, policyNumber, customerName, claimAmount, claimDate, claimReason, statusCode, claimType, animalType, animalBreed, vehicleMake, vehicleModel, vehicleManyear, propertyAddress, anyotherDetails, tasks);
     }
 
     @Override
@@ -186,10 +201,11 @@ public class Claims {
                 ", vehicleManyear='" + vehicleManyear + '\'' +
                 ", propertyAddress='" + propertyAddress + '\'' +
                 ", anyotherDetails='" + anyotherDetails + '\'' +
+                ", tasks=" + tasks +
                 '}';
     }
 
-    public Claims(Integer claimNumber, Integer policyNumber, String customerName, Double claimAmount, LocalDate claimDate, String claimReason, Integer statusCode, String claimType, String animalType, String animalBreed, String vehicleMake, String vehicleModel, String vehicleManyear, String propertyAddress, String anyotherDetails) {
+    public Claims(Integer claimNumber, Integer policyNumber, String customerName, Double claimAmount, LocalDate claimDate, String claimReason, Integer statusCode, String claimType, String animalType, String animalBreed, String vehicleMake, String vehicleModel, String vehicleManyear, String propertyAddress, String anyotherDetails, List<Task> tasks) {
         this.claimNumber = claimNumber;
         this.policyNumber = policyNumber;
         this.customerName = customerName;
@@ -205,6 +221,7 @@ public class Claims {
         this.vehicleManyear = vehicleManyear;
         this.propertyAddress = propertyAddress;
         this.anyotherDetails = anyotherDetails;
+        this.tasks = tasks;
     }
 
     public Claims(){

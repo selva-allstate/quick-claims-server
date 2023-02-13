@@ -1,6 +1,7 @@
 package com.allstate.quickclaimsserver.control;
 
 import com.allstate.quickclaimsserver.domain.Claims;
+import com.allstate.quickclaimsserver.domain.Task;
 import com.allstate.quickclaimsserver.exceptions.ClaimNotFoundException;
 import com.allstate.quickclaimsserver.service.ClaimsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,21 @@ public class ClaimsController {
         return claimsService.saveClaim(claims);
     }
 
+    @PostMapping("/{claimNumber}/task")
+    public void addTask(@PathVariable Integer claimNumber, @RequestBody Task newTask){
+        System.out.println(newTask);
+        claimsService.addTask(claimNumber, newTask);
+    }
+
+    @GetMapping("/{claimNumber}/task")
+    public List<Task> getAllTasks(@PathVariable Integer claimNumber){
+       return claimsService.getAllTasks(claimNumber);
+    }
+    @PutMapping("/task/{taskNumber}")
+    public Task updateClaimTask(@PathVariable Integer taskNumber, @RequestBody HashMap<String, Object> fields) {
+        System.out.println(fields);
+        return claimsService.updateClaimTask(taskNumber, fields);
+    }
     @PutMapping("/{claimNumber}")
     public Claims updateClaim(@PathVariable Integer claimNumber,  @RequestBody HashMap<String, Object> fields)
     {

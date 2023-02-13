@@ -1,22 +1,29 @@
 package com.allstate.quickclaimsserver.service;
 
 import com.allstate.quickclaimsserver.data.ClaimsRepository;
+import com.allstate.quickclaimsserver.data.TaskRepository;
 import com.allstate.quickclaimsserver.domain.Claims;
+import com.allstate.quickclaimsserver.domain.Task;
 import com.allstate.quickclaimsserver.exceptions.ClaimNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional(Transactional.TxType.REQUIRED)
 public class ClaimsServiceImpl implements ClaimsService{
 
     @Autowired
     ClaimsRepository claimsRepository;
+
+    @Autowired
+    TaskRepository taskRepository;
     @Override
     public List<Claims> getAllClaims() {
         return claimsRepository.findAll();
@@ -115,6 +122,38 @@ public class ClaimsServiceImpl implements ClaimsService{
             claims.setAnyotherDetails(fields.get("anyotherDetails").toString());
         }
         return claimsRepository.save(claims);
+    }
+
+
+
+    @Override
+    public void addTask(Integer claimNumber, Task newTask) {
+        Claims claims = claimsRepository.findByclaimNumber(claimNumber);
+        List<Task> tasks = claims.getTasks();
+        tasks.add(newTask);
+        claims.setTasks(tasks);
+        claimsRepository.save(claims);
+    }
+
+    @Override
+    public List<Task> getAllTasks(Integer claimNumber) {
+        Claims claims = claimsRepository.findByclaimNumber(claimNumber);
+        return claims.getTasks();
+    }
+
+    @Override
+    public Task updateClaimTask(Integer taskNumber, Map<String, Object> fields) {
+        //Optional<Task> task = taskRepository.findById(taskNumber);
+       Task task = taskRepository.findBytaskNumber(taskNumber);
+
+        if (fields.containsKey("taskDescription")){
+            task.setTaskDescription (fields.get("taskDescription").toString());;
+        }
+        if (fields.containsKey("taskStatus")){
+            task.setTaskStatus(fields.get("taskStatus").toString());
+        }
+        return taskRepository.save(task);
+        //return claimsRepository.save(claims);
     }
 
 }
